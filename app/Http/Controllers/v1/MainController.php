@@ -22,7 +22,7 @@ class MainController extends Controller
             'email'      => 'bruno@email.com',
             'date'       => now()->toDateString(),
             'apiVersion' => 'v1'
-        ], 'API is running ok');
+        ], 'API Sanctum is running ok');
     }
 
 

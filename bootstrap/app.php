@@ -50,6 +50,16 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->render(function(\Exception $e, Request $request){
             if($request->is('api/*')){
+
+                if($e->getMessage() ===  "Route [login] not defined."){
+
+                    return ApiResponse::error(
+                    message: "Invalid or missing authentication token",
+                    code: 401,
+                 );
+
+                }
+
                  return ApiResponse::error(
                     message: "An unexpected error ocurred",
                     code: 500,

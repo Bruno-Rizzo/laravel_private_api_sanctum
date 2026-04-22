@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\v1\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\v1\MainController;
 use App\Services\ApiResponse;
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function(){
 
 Route::get('/status', [MainController::class, 'status']);
 
@@ -26,6 +31,10 @@ Route::get('/movements/ordered/{field}/{direction}', [MainController::class, 'li
 Route::post('/movements/create',                     [MainController::class, 'createMovement']);
 Route::put('/movements/{id}/update',                 [MainController::class, 'updateMovement']);
 Route::delete('/movements/{id}/delete',              [MainController::class, 'deleteMovement']);
+
+
+});
+
 
 
 
